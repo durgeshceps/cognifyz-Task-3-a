@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Full Website</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Nerko+One&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- Header Section -->
+<header>
+    <div class="container">
+        <div class="logo">
+            <h1>My Website</h1>
+        </div>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#services">Services</a></li>
+                <li><a href="#gallery">Gallery</a></li>
+                <li><a href="#slideshow">Slideshow</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Hero Section -->
+<section id="home" class="hero-section">
+    <div class="hero-content">
+        <h2>Welcome to My Website</h2>
+        <p>Discover beautiful images, services, and more.</p>
+        <a href="#gallery" class="btn">View Gallery</a>
+    </div>
+</section>
+
+<!-- About Section -->
+<section id="about" class="about-section">
+    <div class="container">
+        <h2>About Us</h2>
+        <p>We are passionate about capturing and sharing beautiful moments. Our website showcases a collection of stunning images and offers various services to meet your needs.</p>
+    </div>
+</section>
+
+<!-- Services Section -->
+<section id="services" class="services-section">
+    <div class="container">
+        <h2>Our Services</h2>
+        <div class="service-cards">
+            <div class="service-card">
+                <h3>Photography</h3>
+                <p>We offer professional photography services for various events and occasions.</p>
+            </div>
+            <div class="service-card">
+                <h3>Photo Editing</h3>
+                <p>Our experts provide top-notch photo editing services to enhance your images.</p>
+            </div>
+            <div class="service-card">
+                <h3>Custom Prints</h3>
+                <p>Get your favorite photos printed on high-quality materials, customized just for you.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Image Gallery Section -->
+<section id="gallery" class="gallery-section">
+    <div class="container">
+        <h2>Image Gallery</h2>
+        <div class="gallery">
+            <div class="thumbnails">
+                <img src="./pexels-julien-riedel-907961520-20027103.jpg" alt="Image 1" onclick="enlargeImage('image1.jpg')">
+                <img src="./pexels-francesco-ungaro-27121785.jpg" alt="Image 2" onclick="enlargeImage('image2.jpg')">
+                <img src="./pexels-pete79-27863647.jpg" alt="Image 3" onclick="enlargeImage('image3.jpg')">
+                <img src="./pexels-matej-simko-809440051-27832065.jpg" alt="Image 4" onclick="enlargeImage('image4.jpg')">
+            </div>
+            <div class="enlarged">
+                <img id="enlargedImage" src="./pexels-pok-rie-33563-27269628.jpg" alt="Enlarged Image">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Slideshow Section -->
+<section id="slideshow" class="slideshow-section">
+    <div class="container">
+        <h2>Image Slideshow</h2>
+        <div class="slideshow-container">
+            <div class="slides fade">
+                <img src="./pexels-berna-elif-359546580-27617348.jpg" alt="Image 1">
+            </div>
+            <div class="slides fade">
+                <img src="./pexels-cesare-brunello-582273577-24643976.jpg" alt="Image 2">
+            </div>
+            <div class="slides fade">
+                <img src="./pexels-berna-elif-359546580-27617348.jpg" alt="Image 3">
+            </div>
+            <div class="slides fade">
+                <img src="./pexels-frederic-hancke-113473984-27316100.jpg" alt="Image 3">
+            </div>
+            <div class="slides fade">
+                <img src="./pexels-dibakar-roy-2432543-19339977.jpg" alt="Image 3">
+            </div>
+            <div class="slides fade">
+                <img src="./pexels-uwc12-2526935.jpg" alt="Image 3">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Contact Section -->
+<section id="contact" class="contact-section">
+    <div class="container">
+        <h2>Contact Us</h2>
+        <form action="submit_form.php" method="POST">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input type="text" id="name" name="name" required>
+            </div>
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="message">Message:</label>
+                <textarea id="message" name="message" required></textarea>
+            </div>
+            <button type="submit" class="btn">Send Message</button>
+        </form>
+    </div>
+</section>
+
+<!-- Footer Section -->
+<footer>
+    <div class="container">
+        <p>© 2024 My Website | <a href="#contact">Contact</a></p>
+        <div class="social-icons">
+            <a href="#"><img src="facebook-icon.png" alt="Facebook"></a>
+            <a href="#"><img src="twitter-icon.png" alt="Twitter"></a>
+            <a href="#"><img src="instagram-icon.png" alt="Instagram"></a>
+        </div>
+    </div>
+</footer>
+
+<script>
+    function enlargeImage(imageSrc) {
+        document.getElementById('enlargedImage').src = imageSrc;
+    }
+
+    let slideIndex = 0;
+    showSlides();
+
+    function showSlides() {
+        let slides = document.getElementsByClassName("slides");
+        for (let i = 0; i < slides.length; i++) {
+            slides[i].style.display = "none";
+        }
+        slideIndex++;
+        if (slideIndex > slides.length) { slideIndex = 1 }
+        slides[slideIndex - 1].style.display = "block";
+        setTimeout(showSlides, 3000); // Change image every 3 seconds
+    }
+</script>
+
+</body>
+</html>
